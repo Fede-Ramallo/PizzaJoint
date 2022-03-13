@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route, useLocation} from 'react-router-dom';
-import Base from './components/base';
-import Toppings from './components/toppings';
-import Order from './components/order';
+import { Routes, Route, useLocation} from 'react-router-dom';
+import Base from './components/Base';
+import Toppings from './components/Toppings';
+import Order from './components/Order';
 import Home from './components/Home';
+import Header from './components/Header';
+import Modal from './components/Modal';
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
   const location = useLocation();
-  const [pizza, setPizza] = useState({ base: "", toppings:[]});
+  const [pizza, setPizza] = useState({ base: "", toppings: [] });
+  const [showModal, setShowModal] = useState(false);
 
   const addBase = (base) => {
     setPizza({...pizza, base})
@@ -24,22 +28,18 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route exact path='base'>
-          <Base addBase={addBase} pizza={pizza} />
-        </Route>
-        <Route path='toppings'>
-          <Toppings addTopping={addTopping} pizza={pizza}/>
-        </Route>
-        <Route path='order'>
-        <Order pizza={pizza}/>
-        </Route>
-        <Route>
-          <Home />
-        </Route>
+    <>
+    <Header />
+    <Modal showModal={showModal} setShowModal={setShowModal} />
+    <AnimatePresence exitBeforeEnter onExitComplete={() => setShowModal(false)} >
+      <Routes location={location} key={location.key}>
+        <Route path='/base' element={<Base addBase={addBase} pizza={pizza} />} />
+        <Route path='/toppings' element={<Toppings addTopping={addTopping} pizza={pizza}/>} />
+        <Route path='/order' element={<Order pizza={pizza} setShowModal={setShowModal} />} />
+        <Route path='/' element={ <Home />}/>
       </Routes>
-    </BrowserRouter>
+      </AnimatePresence>
+    </>
   );
 }
 
