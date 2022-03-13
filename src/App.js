@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Routes, Route, useLocation} from 'react-router-dom';
-import Base from './components/Base';
-import Toppings from './components/Toppings';
-import Order from './components/Order';
+import Base from './components/base';
+import Toppings from './components/toppings';
+import Order from './components/order';
 import Home from './components/Home';
 import Header from './components/Header';
 import Modal from './components/Modal';
