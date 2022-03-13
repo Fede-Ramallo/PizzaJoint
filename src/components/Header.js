@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion';
 
 const svgVariants = {
@@ -29,11 +30,8 @@ const pathVariants = {
 const Header = () => {
   return (
     <header>
-      <motion.div className="logo"
-      drag
-      dragConstraints={{left: 0, right: 0, top: 0, bottom: 0}}
-      dragElastic={1}
-      >
+      <Link to='/'>
+      <motion.div className="logo">
         <motion.svg className="pizza-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
         variants={svgVariants}
         initial='hidden'
@@ -51,6 +49,7 @@ const Header = () => {
           />
         </motion.svg>
       </motion.div>
+      </Link>
       <motion.div className="title"
         initial={{ y: -250}}
         animate={{ y: -10 }}

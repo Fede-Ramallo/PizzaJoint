@@ -56,8 +56,8 @@ const Base = ({ addBase, pizza }) => {
           let spanClass = pizza.base === base ? 'active' : '';
           return (
             <motion.li key={base} onClick={() => addBase(base)}
-              whileHover={{ scale: 1.3, originX: 0, color: '#f8e112' }}
-              transition={{ type: 'spring', stiffness: 300 }}
+              whileHover={{ scale: 1.25, originX: 0, color: '#f8e112' }}
+              transition={{ type: 'spring', stiffness: 200 }}
             >
               <span className={spanClass}>{ base }</span>
             </motion.li>
