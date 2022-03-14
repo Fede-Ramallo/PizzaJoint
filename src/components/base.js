@@ -10,7 +10,7 @@ const containerVariants = {
   visible: { 
     opacity: 1, 
     x: 0,
-    transition: { type: 'spring', delay: 0.5, stiffness: 80 }
+    transition: { type: 'spring', delay: 0.5}
   },
   exit: {
     x: "-100vh",
@@ -24,7 +24,7 @@ const nextVariants = {
   },
   visible: {
     x: 0,
-    transition: { type: 'spring', stiffness: 65  }
+    transition: { type: 'spring', stiffness: 110  }
   } 
 }
 
